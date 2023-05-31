@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:get/get_connect.dart';
-import 'package:get/utils.dart';
 import 'package:getx_mvvm/data/app_exceptions.dart';
 import 'package:getx_mvvm/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
@@ -39,25 +37,28 @@ class NetworkApiServices extends BaseApiServices {
     dynamic responseJson;
     try {
       final response = await http
-          .post(Uri.parse(url), body: jsonEncode(data))
+          .post(Uri.parse(url), body: data)
           .timeout(Duration(seconds: 20));
       responseJson = returnResponse(response);
     } on SocketException {
       throw InternetException("");
-    } on TimeoutException {
+    } on RequestTimeOut {
       throw RequestTimeOut("");
     }
     return responseJson;
   }
 
   dynamic returnResponse(http.Response response) {
+    if (kDebugMode) {
+      print("response---${response.body}");
+    }
     switch (response.statusCode) {
       case 200:
         dynamic responsejson = jsonDecode(response.body);
         return responsejson;
       case 400:
-        throw InvalidUrlException;
-
+        dynamic responsejson = jsonDecode(response.body);
+        return responsejson;
       default:
         throw FetchDataException(
             "Error occurred while fetching data from server: " +

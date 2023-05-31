@@ -8,7 +8,7 @@ class AppException implements Exception {
 }
 
 class InternetException extends AppException {
-  InternetException([String? _message]) : super(_message, "no internet");
+  InternetException([String? _message]) : super(_message, "No internet");
 }
 
 class RequestTimeOut extends AppException {
@@ -24,7 +24,7 @@ class InvalidUrlException extends AppException {
   InvalidUrlException([String? _message]) : super(_message, "Invalid Url");
 }
 
-
 class FetchDataException extends AppException {
-  FetchDataException([String? _message]) : super(_message, "Error while fetching data");
+  FetchDataException([String? _message])
+      : super(_message, "Error while fetching data");
 }

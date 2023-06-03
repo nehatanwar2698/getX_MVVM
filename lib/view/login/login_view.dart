@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_mvvm/res/components/round_button.dart';
 
 import '../../utility/utils.dart';
-import '../../view_models/controller/login_controller.dart';
+import '../../view_models/controller/login/login_controller.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

@@ -12,7 +12,7 @@ class LoginButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RoundButton(
+    return Obx(() => RoundButton(
         title: 'login'.tr,
         width: 200,
         loading: loginController.loading.value,
@@ -20,6 +20,6 @@ class LoginButtonWidget extends StatelessWidget {
           if (formKey.currentState!.validate()) {
             loginController.loginApi();
           }
-        });
+        }));
   }
 }

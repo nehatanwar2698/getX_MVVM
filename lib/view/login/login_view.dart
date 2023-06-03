@@ -17,7 +17,6 @@ class _LoginViewState extends State<LoginView> {
   final loginController = Get.put(LoginController());
   final _formKey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +46,10 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(
               height: 40,
             ),
-            Obx(() => LoginButtonWidget(formKey: _formKey))
+            LoginButtonWidget(formKey: _formKey)
           ],
         ),
       ),
     );
   }
-
 }

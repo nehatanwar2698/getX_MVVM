@@ -10,7 +10,7 @@ class SplashServices {
   void isLogin() {
     userPreference.getUser().then((value) {
       print(value.token);
-      if (value.token!.isEmpty || value.token == null) {
+      if (value.token == "" || value.token == null) {
         Timer(const Duration(seconds: 2), () {
           Get.toNamed(RoutesName.login_screen);
         });

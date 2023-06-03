@@ -29,8 +29,11 @@ class LoginController extends GetxController {
         UserPreference()
             .saveUser(LoginResponseModel.fromJson(value))
             .then((value) {
+          // clear all resources
+          Get.delete<LoginController>();
+
           // if data is save then what we do go to homescreen
-          Get.toNamed(RoutesName.home_screen);
+          Get.toNamed(RoutesName.home_screen)!.then((value) {});
         }).onError((error, stackTrace) {
           //if error occur
           Utils.showSnakBar("Login", error.toString());

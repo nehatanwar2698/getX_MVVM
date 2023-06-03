@@ -78,7 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       title: Text("${data?.firstName}"),
                       subtitle: Text("${data?.email}"),
-                      trailing: Text("${data?.id}"),
                     );
                   });
 
